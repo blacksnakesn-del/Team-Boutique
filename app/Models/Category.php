@@ -7,9 +7,18 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
-    protected $fillable = ['name', 'color', 'image'];
+    protected $fillable = ['id', 'name', 'color', 'image'];
 
     public function products() : HasMany {
-        return $this->hasMany(product::class);
+        return $this->hasMany(Product::class);
+    }
+
+    public function toCatalogArray() {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'color' => $this->color,
+            'image' => $this->image,
+        ];
     }
 }
