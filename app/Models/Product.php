@@ -42,8 +42,10 @@ class Product extends Model
             'categoryId' => $this->categorie_id,
             'name' => $this->name,
             'price' => $this->price,
+            'sale_price' => $this->sale_price,
+            'unit' => $this->unit,
             'stock' => $this->stock,
-            'origin' => $this->description,
+            'origin' => $this->origin,
             'image' => $this->image,
         ];
     }

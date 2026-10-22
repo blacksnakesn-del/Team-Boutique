@@ -11,7 +11,7 @@ class CatalogController extends Controller
 {
     public function index(Request $request)
     {
-        $products = Product::where('active', true)
+        $products = Product::where('featured', true)
             ->orderBy('name')
             ->get()
             ->map(fn ($products) => $products->toCatalogArray());
@@ -21,7 +21,7 @@ class CatalogController extends Controller
             ->map(fn ($categories) => $categories->toCatalogArray());
 
         return inertia::render('Catalog', [
-            'category' => $categories,
+            'categories' => $categories,
             'products' => $products,
             'isHome' => $request->routeIs('home'),
             'initialSearch' => (string) $request->query('q', ''),
